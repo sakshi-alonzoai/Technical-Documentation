@@ -12,13 +12,13 @@ The R2 API is built on a modern, decoupled architecture, with a Python-based bac
 
 ```mermaid
 graph TD
-    A[User] --> B{React JS Frontend};
-    B --> C{FastAPI Backend};
-    C --> D{Authentication};
-    C --> E{NLP Processor};
-    E --> F{LLM (OpenAI/Gemini)};
-    E --> G{AQL};
-    C --> H{SQL Builder};
+    A[User] --> B[React JS Frontend];
+    B --> C[FastAPI Backend];
+    C --> D[Authentication];
+    C --> E[NLP Processor];
+    E --> F[LLM (OpenAI/Gemini)];
+    E --> G[AQL];
+    C --> H[SQL Builder];
     H --> G;
     H --> I[PostgreSQL Database];
     C --> I;
