@@ -27,25 +27,22 @@ graph TD
     B --> A;
 ```
 
-*   **Backend:**
-    *   **Framework:** FastAPI, a high-performance Python web framework for building APIs.
-    *   **Database:** PostgreSQL, a powerful open-source object-relational database system. It is used for storing all sports data, user information, and application state.
-    *   **Natural Language Processing:** Large Language Models (LLMs) like OpenAI's GPT series and Google's Gemini are used to convert natural language queries into a structured format (AQL).
-    *   **Authentication:** JWT (JSON Web Tokens) are used for securing API endpoints.
-    *   **ORM/Database Interaction:** The system uses a combination of direct SQL queries and a custom `PGSQLAdapter` for interacting with the PostgreSQL database.
+| Category      | Technology/Library | Description                                                                                                      |
+|---------------|--------------------|------------------------------------------------------------------------------------------------------------------|
+| **Backend**   | FastAPI            | A high-performance Python web framework for building APIs.                                                      |
+|               | PostgreSQL         | A powerful open-source object-relational database system used for storing all data.                              |
+|               | LLMs (OpenAI/Gemini) | Used to convert natural language queries into a structured format (AQL).                                         |
+|               | JWT                | JSON Web Tokens are used for securing API endpoints.                                                             |
+|               | PGSQLAdapter       | A custom adapter for interacting with the PostgreSQL database.                                                   |
+| **Frontend**  | React JS           | A popular JavaScript library for building user interfaces (inferred from CORS settings).                           |
+| **Key Libraries** | `psycopg2-binary`    | For connecting to the PostgreSQL database.                                                                       |
+|               | `uvicorn`          | ASGI server for running the FastAPI application.                                                                 |
+|               | `pydantic`         | For data validation and settings management.                                                                     |
+|               | `passlib`, `bcrypt`, `PyJWT` | For password hashing and JWT authentication.                                                              |
+|               | `folioprompts`     | For version-controlling prompts sent to LLMs.                                                                    |
+|               | `sentence-transformers` | For semantic search and embedding generation.                                                                 |
+|               | `pandas`           | For data manipulation and CSV export.
 
-*   **Frontend (Inferred):**
-    *   **Framework:** React JS (inferred from CORS settings), a popular JavaScript library for building user interfaces.
-
-*   **Key Libraries:**
-    *   `psycopg2-binary`: For connecting to the PostgreSQL database.
-    *   `fastapi`: The core web framework.
-    *   `uvicorn`: ASGI server for running the FastAPI application.
-    *   `pydantic`: For data validation and settings management.
-    *   `passlib`, `bcrypt`, `PyJWT`: For password hashing and JWT authentication.
-    *   `folioprompts`: For version-controlling prompts sent to LLMs.
-    *   `sentence-transformers`: For semantic search and embedding generation.
-    *   `pandas`: For data manipulation and CSV export.
 
 ### High Level Diagram
 
