@@ -134,6 +134,16 @@ sequenceDiagram
 
 #### NL Query Processing Flow
 
+```mermaid
+graph TD
+    A[User Input] --> B(API Request);
+    B --> C(Authentication);
+    C --> D(AQL Generation);
+    D --> E(SQL Generation);
+    E --> F(Database Query);
+    F --> G(Response);
+```
+
 1.  **User Input:** The user enters a natural language query into the frontend (e.g., "Which player had the most rushing yards in a game last season?").
 
 2.  **API Request:** The frontend sends a POST request to the `/api/search` endpoint with the query, sport, entity, and other parameters.
