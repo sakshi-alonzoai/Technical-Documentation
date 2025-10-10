@@ -301,26 +301,6 @@ The codebase is organized into the following main directories:
 
 ```
 C:.
-├───.git
-│   ├───hooks
-│   ├───info
-│   ├───logs
-│   │   └───refs
-│   │       ├───heads
-│   │       └───remotes
-│   │           └───origin
-│   ├───objects
-│   │   ├───info
-│   │   └───pack
-│   └───refs
-│       ├───heads
-│       ├───remotes
-│       │   └───origin
-│       └───tags
-├───.github
-│   └───workflows
-│       ├───dev.yml
-│       └───pilot.yml
 ├───app
 │   ├───api
 │   │   ├───middleware
