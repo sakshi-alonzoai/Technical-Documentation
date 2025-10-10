@@ -216,19 +216,6 @@ graph TD
 
 ## 4. Operational and Quality Assurance
 
-### Code Structure
-
-The project is organized into several key directories:
-
-*   `api/`: Contains the FastAPI server, Celery worker, and API-related configurations.
-*   `config/`: Holds all configuration files, including database connections, migrator settings, and helper scripts.
-*   `scripts/`: The core of the application, containing all data processing scripts, the orchestrator, and Hop pipeline definitions.
-    *   `GeniusToS3Download/`: Scripts for downloading data from the Genius Sports API.
-    *   `Orchestrator/`: The workflow orchestration engine.
-    *   `Orchestrator/Pipelines/`: Contains the Hop pipeline files (`.hpl`) and sequence definitions.
-*   `main.py`: The main entry point for the application (currently a placeholder).
-*   `requirements.in`: A list of Python dependencies for the project.
-
 ### Directory Structure
 
 ```
@@ -300,6 +287,19 @@ C:.
                 ├───TeamGameStatistics/
                 └───TeamSeasonStatistics/
 ```
+
+### Code Structure
+
+The project is organized into several key directories:
+
+*   `api/`: Contains the FastAPI server, Celery worker, and API-related configurations.
+*   `config/`: Holds all configuration files, including database connections, migrator settings, and helper scripts.
+*   `scripts/`: The core of the application, containing all data processing scripts, the orchestrator, and Hop pipeline definitions.
+    *   `GeniusToS3Download/`: Scripts for downloading data from the Genius Sports API.
+    *   `Orchestrator/`: The workflow orchestration engine.
+    *   `Orchestrator/Pipelines/`: Contains the Hop pipeline files (`.hpl`) and sequence definitions.
+*   `main.py`: The main entry point for the application (currently a placeholder).
+*   `requirements.in`: A list of Python dependencies for the project.
 
 ### Testing & Validation
 
