@@ -11,19 +11,19 @@ The Post-Game Workflow Engine is a sophisticated data processing pipeline engine
 The engine is built on a decoupled, asynchronous architecture that separates the API from the heavy data processing tasks. This ensures that user-facing endpoints remain fast and available while complex computations are handled in the background.
 
 ```mermaid
-graph TD
+flowchart TD
     subgraph "User Interaction"
         User[User/Client]
     end
 
     subgraph "Application Layer"
-        FastAPI[FastAPI Server<br>(api/ScriptsAPI.py)]
-        Broker[Message Broker<br>(Redis/RabbitMQ)]
-        Celery[Celery Worker<br>(api/celery_worker.py)]
+        FastAPI[FastAPI Server - api/ScriptsAPI.py]
+        Broker[Message Broker - Redis/RabbitMQ]
+        Celery[Celery Worker - api/celery_worker.py]
     end
 
     subgraph "Processing Logic"
-        Scripts[Processing Scripts<br>(scripts/)]
+        Scripts[Processing Scripts - scripts/]
     end
 
     subgraph "External Services & Data Stores"
