@@ -1,14 +1,14 @@
-# R2 API Technical Documentation
+# Search Technical Documentation
 
 ## 1. Foundational Context
 
 ### Project Overview & Objective
 
-The R2 API is a sophisticated sports analytics platform designed to provide users with a powerful and intuitive interface for querying a vast repository of sports data. The primary objective of the R2 API is to translate complex natural language queries into precise, structured database queries, enabling users to retrieve detailed statistics, records, and insights without needing to know the underlying database schema or SQL. The system is built to be fast, scalable, and extensible, supporting multiple sports and a wide range of analytical queries.
+The Search is a sophisticated sports analytics platform designed to provide users with a powerful and intuitive interface for querying a vast repository of sports data. The primary objective of the Search is to translate complex natural language queries into precise, structured database queries, enabling users to retrieve detailed statistics, records, and insights without needing to know the underlying database schema or SQL. The system is built to be fast, scalable, and extensible, supporting multiple sports and a wide range of analytical queries.
 
 ### Architecture & Tech Stack
 
-The R2 API is built on a modern, decoupled architecture, with a Python-based backend and a presumed React JS frontend.
+The Search is built on a modern, decoupled architecture, with a Python-based backend and a presumed React JS frontend.
 
 ```mermaid
 graph TD
