@@ -16,7 +16,7 @@ graph TD
     B --> C[FastAPI Backend];
     C --> D[Authentication];
     C --> E[NLP Processor];
-    E --> F[LLM (OpenAI/Gemini)];
+    E --> F["LLM (OpenAI/Gemini)"];
     E --> G[AQL];
     C --> H[SQL Builder];
     H --> G;
