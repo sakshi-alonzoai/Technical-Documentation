@@ -476,9 +476,7 @@ C:.
 │   └───conftest.py
 ├───.gitignore
 ├───encode.py
-├───Fastapi_NL_Search_Pipeline.png
 ├───main.py
-├───README.md
 ├───requirements.txt
 └───roster_import.py
 ```
