@@ -6,6 +6,31 @@
 
 The Post-Game Workflow Engine is a sophisticated data processing pipeline engineered to handle and analyze sports statistics, with a primary focus on American football and basketball. Its core objective is to automate the entire post-game data lifecycle: fetching raw data from the Genius Sports API, processing it through a series of configurable transformation pipelines, and storing the structured results in a PostgreSQL database. The system is designed for reliability and scalability, using an asynchronous task queue to manage long-running processes, ensuring that the API remains responsive and that data is processed efficiently.
 
+### System Workflows
+
+#### Single Match Processing Flow
+
+```mermaid
+graph TD
+    A[API Request: POST /single_match_processor] --> B{Enqueue Job};
+    B --> C{Celery Worker Dequeues};
+    C --> D(Download Data from Genius);
+    D --> E(Store Raw Data in S3);
+    E --> F(Run Hop Pipelines);
+    F --> G(Update PostgreSQL);
+    G --> H(Update Derived Stats);
+    H --> I{Job Complete};
+```
+
+1.  **API Request:** A user sends a `POST` request to `/single_match_processor` with a `match_id` and `competition_id`.
+2.  **Enqueue Job:** The FastAPI server creates a Celery task and returns a `job_id` to the user.
+3.  **Download Data:** The Celery worker executes the `single_match_processor_api.py` script, which calls the Genius Sports API to fetch game data.
+4.  **Store Raw Data:** The raw JSON/XML data is uploaded to an AWS S3 bucket for archival and debugging.
+5.  **Run Hop Pipelines:** The orchestrator executes a sequence of Hop pipelines (`.hpl` files) to process game statistics (e.g., `PGS_Construction.hpl`, `TGS_Construction.hpl`).
+6.  **Update PostgreSQL:** The pipelines write the transformed data into the appropriate tables in the PostgreSQL database.
+7.  **Update Derived Stats:** After game-level data is processed, the system triggers updates for derived statistics, such as player season and career totals.
+8.  **Job Complete:** The status of the job is updated to "SUCCESS".
+
 ### Architecture & Tech Stack
 
 The engine is built on a decoupled, asynchronous architecture that separates the API from the heavy data processing tasks. This ensures that user-facing endpoints remain fast and available while complex computations are handled in the background.
@@ -139,31 +164,6 @@ sequenceDiagram
         ```bash
         celery -A api.celery_worker.celery_app worker --loglevel=info
         ```
-
-### System Workflows
-
-#### Single Match Processing Flow
-
-```mermaid
-graph TD
-    A[API Request: POST /single_match_processor] --> B{Enqueue Job};
-    B --> C{Celery Worker Dequeues};
-    C --> D(Download Data from Genius);
-    D --> E(Store Raw Data in S3);
-    E --> F(Run Hop Pipelines);
-    F --> G(Update PostgreSQL);
-    G --> H(Update Derived Stats);
-    H --> I{Job Complete};
-```
-
-1.  **API Request:** A user sends a `POST` request to `/single_match_processor` with a `match_id` and `competition_id`.
-2.  **Enqueue Job:** The FastAPI server creates a Celery task and returns a `job_id` to the user.
-3.  **Download Data:** The Celery worker executes the `single_match_processor_api.py` script, which calls the Genius Sports API to fetch game data.
-4.  **Store Raw Data:** The raw JSON/XML data is uploaded to an AWS S3 bucket for archival and debugging.
-5.  **Run Hop Pipelines:** The orchestrator executes a sequence of Hop pipelines (`.hpl` files) to process game statistics (e.g., `PGS_Construction.hpl`, `TGS_Construction.hpl`).
-6.  **Update PostgreSQL:** The pipelines write the transformed data into the appropriate tables in the PostgreSQL database.
-7.  **Update Derived Stats:** After game-level data is processed, the system triggers updates for derived statistics, such as player season and career totals.
-8.  **Job Complete:** The status of the job is updated to "SUCCESS".
 
 ## 3. Reference Material
 
