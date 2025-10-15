@@ -47,13 +47,13 @@ flowchart TD
 
     subgraph "Local Environment"
         CLI[lmi_testgen.py]
-        TestSuite[Test Suite JSON]
+        TestSuite["JSON Prompts (Test Cases)"]
         Playwright[Playwright Library]
         GeneratedScript[Generated Python Script]
     end
 
     subgraph "External Services"
-        OpenAI[OpenAI API (GPT-4)]
+        OpenAI[OpenAI API - GPT-4]
         WebApp[Web Application Under Test]
     end
 
@@ -97,7 +97,7 @@ sequenceDiagram
     "lmi_testgen.py"-->>"Generated Script": Append generated_function_1
     "lmi_testgen.py"-->>"Playwright": Execute generated_function_1
     "Playwright"-->>"Web Application": Perform action (e.g., click button)
-    ... loop for all commands ...
+    Note over "lmi_testgen.py": loop for all commands
     "lmi_testgen.py"-->>"Generated Script": Append run_all_tests() function
 ```
 
