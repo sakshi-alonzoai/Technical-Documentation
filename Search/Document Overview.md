@@ -1,24 +1,24 @@
-# R2 API Technical Documentation
+# Search Technical Documentation
 
 ## 1. Foundational Context
 
 ### Project Overview & Objective
 
-The R2 API is a sophisticated sports analytics platform designed to provide users with a powerful and intuitive interface for querying a vast repository of sports data. The primary objective of the R2 API is to translate complex natural language queries into precise, structured database queries, enabling users to retrieve detailed statistics, records, and insights without needing to know the underlying database schema or SQL. The system is built to be fast, scalable, and extensible, supporting multiple sports and a wide range of analytical queries.
+The Search is a sophisticated sports analytics platform designed to provide users with a powerful and intuitive interface for querying a vast repository of sports data. The primary objective of the Search is to translate complex natural language queries into precise, structured database queries, enabling users to retrieve detailed statistics, records, and insights without needing to know the underlying database schema or SQL. The system is built to be fast, scalable, and extensible, supporting multiple sports and a wide range of analytical queries.
 
 ### Architecture & Tech Stack
 
-The R2 API is built on a modern, decoupled architecture, with a Python-based backend and a presumed React JS frontend.
+The Search is built on a modern, decoupled architecture, with a Python-based backend and a presumed React JS frontend.
 
 ```mermaid
 graph TD
-    A[User] --> B{React JS Frontend};
-    B --> C{FastAPI Backend};
-    C --> D{Authentication};
-    C --> E{NLP Processor};
-    E --> F{LLM (OpenAI/Gemini)};
-    E --> G{AQL};
-    C --> H{SQL Builder};
+    A[User] --> B[React JS Frontend];
+    B --> C[FastAPI Backend];
+    C --> D[Authentication];
+    C --> E[NLP Processor];
+    E --> F["LLM (OpenAI/Gemini)"];
+    E --> G[AQL];
+    C --> H[SQL Builder];
     H --> G;
     H --> I[PostgreSQL Database];
     C --> I;
@@ -41,7 +41,8 @@ graph TD
 |               | `passlib`, `bcrypt`, `PyJWT` | For password hashing and JWT authentication.                                                              |
 |               | `folioprompts`     | For version-controlling prompts sent to LLMs.                                                                    |
 |               | `sentence-transformers` | For semantic search and embedding generation.                                                                 |
-|               | `pandas`           | For data manipulation and CSV export.                                                                            |
+|               | `pandas`           | For data manipulation and CSV export.
+
 
 ### High Level Diagram
 
@@ -300,26 +301,6 @@ The codebase is organized into the following main directories:
 
 ```
 C:.
-├───.git
-│   ├───hooks
-│   ├───info
-│   ├───logs
-│   │   └───refs
-│   │       ├───heads
-│   │       └───remotes
-│   │           └───origin
-│   ├───objects
-│   │   ├───info
-│   │   └───pack
-│   └───refs
-│       ├───heads
-│       ├───remotes
-│       │   └───origin
-│       └───tags
-├───.github
-│   └───workflows
-│       ├───dev.yml
-│       └───pilot.yml
 ├───app
 │   ├───api
 │   │   ├───middleware
@@ -495,9 +476,7 @@ C:.
 │   └───conftest.py
 ├───.gitignore
 ├───encode.py
-├───Fastapi_NL_Search_Pipeline.png
 ├───main.py
-├───README.md
 ├───requirements.txt
 └───roster_import.py
 ```
